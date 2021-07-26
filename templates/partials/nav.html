@@ -1,0 +1,9 @@
+<a href="{% url "core:home" %}">Obnb</a>
+<ul>
+    {% if user.is_authenticated %}
+        <li><a href="{% url "users:logout" %}">LogOut</a></li>
+    {% else %}
+        <li><a href="{% url "users:login" %}">Login</a></li>
+        <li><a href="{% url "users:signup" %}">SignUp</a></li>
+    {% endif %}
+</ul>

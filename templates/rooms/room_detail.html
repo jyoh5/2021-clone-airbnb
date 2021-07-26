@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Room Detail{% endblock page_title %}
+
+{% block content %}
+<div class="w=1/3">
+    {% if room.host == user %}
+    {% endif %}
+    <a href = "{% url 'rooms:edit' room.pk %}" class-"btn-link block">Edit Room</a>
+
+</div>
+<div>
+    <h1>{{room.name}}</h1>
+    <h3>{{room.description}}</h3>
+</div>
+<div>
+    <h2>
+        By: {{room.host.username}}
+        {% if room.host.superhost %}
+            (This is super host's room!)
+        {% endif %}
+    </h2>
+
+    <h3>Amenities</h3>
+    <ul>
+        {% for a in room.amenities.all %}
+            <li>{{a}}</li>
+        {% endfor %}
+    </ul>
+    <h3>Facilities</h3>
+    <ul>
+        {% for f in room.facilities.all %}
+            <li>{{f}}</li>
+        {% endfor %}
+    </ul>
+    <h3>House Rules</h3>
+    <ul>
+        {% for r in room.house_rules.all %}
+            <li>{{r}}</li>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}
